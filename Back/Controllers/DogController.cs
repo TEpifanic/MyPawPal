@@ -1,17 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MyPawPal;
 
 [ApiController]
 [Route("[controller]")]
-public class DogController : ControllerBase
+public class DogController(MyDbContext context) : ControllerBase
 {
-    private readonly MyDbContext _context;
-
-    public DogController(MyDbContext context)
-    {
-        _context = context;
-    }
+    private readonly MyDbContext _context = context;
 
     // GET: /Dog
     [HttpGet]
@@ -38,17 +32,23 @@ public class DogController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Task>> PostDog(DogInfo dog)
     {
+        var user = await _context.UserInfos.FindAsync(dog.UserId);
+        if (user == null)
+        {
+            return NotFound("User not found");
+        }
+
         _context.DogInfos.Add(dog);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(GetDog), new { id = dog.Dog_Id }, dog);
+        return CreatedAtAction(nameof(GetDog), new { id = dog.DogId }, dog);
     }
 
     // PUT: /Dog/5
     [HttpPut("{id}")]
     public async Task<IActionResult> PutDog(int id, DogInfo dog)
     {
-        if (id != dog.Dog_Id)
+        if (id != dog.DogId)
         {
             return BadRequest();
         }
@@ -61,7 +61,7 @@ public class DogController : ControllerBase
         }
         catch (DbUpdateConcurrencyException)
         {
-            if (!_context.DogInfos.Any(u => u.Dog_Id == id))
+            if (!_context.DogInfos.Any(u => u.DogId == id))
             {
                 return NotFound();
             }

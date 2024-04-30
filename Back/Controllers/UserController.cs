@@ -1,18 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MyPawPal;
 
 [ApiController]
 [Route("[controller]")]
-public class UserController : ControllerBase
+public class UserController(MyDbContext context) : ControllerBase
 {
-    private readonly MyDbContext _context;
-
-    public UserController(MyDbContext context)
-    {
-        _context = context;
-    }
+    private readonly MyDbContext _context = context;
 
     // GET: /User
     [HttpGet]
@@ -23,7 +17,7 @@ public class UserController : ControllerBase
 
     // GET: /User/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<UserInfo>> GetUser(int id)
+    public async Task<ActionResult<UserInfo>> GetUser(string id)
     {
         var user = await _context.UserInfos.FindAsync(id);
 
@@ -35,63 +29,33 @@ public class UserController : ControllerBase
         return user;
     }
 
+    // GET: /User/5
+    [HttpGet("UserDogs/{id}")]
+    public async Task<List<DogInfo>> GetDogsForUser(string id)
+    {
+        var user = await _context.UserInfos.Include(u => u.Dogs).FirstOrDefaultAsync(u => u.UserId == id);
+
+        if (user != null)
+        {
+            return user.Dogs;
+        }
+
+        return [];
+    }
+
     // POST: /User
     [HttpPost]
-    public async Task<ActionResult<Task>> PostUser(UserInfo user)
+    public async Task<ActionResult> CreateUser(UserInfo userInfo)
     {
-        var passwordHasher = new PasswordHasher<UserInfo>();
-        user.Password_Hash = passwordHasher.HashPassword(user, user.Password_Hash);
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
 
-        _context.UserInfos.Add(user);
+        _context.UserInfos.Add(userInfo);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(GetUser), new { id = user.User_Id }, user);
+        return CreatedAtAction(nameof(GetUser), new { id = userInfo.UserId }, userInfo);
     }
 
-    // PUT: /User/5
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutUser(int id, UserInfo user)
-    {
-        if (id != user.User_Id)
-        {
-            return BadRequest();
-        }
-
-        _context.Entry(user).State = EntityState.Modified;
-
-        try
-        {
-            await _context.SaveChangesAsync();
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!_context.UserInfos.Any(u => u.User_Id == id))
-            {
-                return NotFound();
-            }
-            else
-            {
-                throw;
-            }
-        }
-
-        return NoContent();
-    }
-
-    // DELETE: /User/5
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteUser(int id)
-    {
-        var user = await _context.UserInfos.FindAsync(id);
-
-        if (user == null)
-        {
-            return NotFound();
-        }
-
-        _context.UserInfos.Remove(user);
-        await _context.SaveChangesAsync();
-
-        return NoContent();
-    }
 }

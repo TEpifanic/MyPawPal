@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Tangu\\OneDrive\\Documents\\GitHub\\MyPawPal\\Back\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C6A9803A-A136-46D8-B7B1-85626E6944B0}|MyPawPal.csproj|c:\\users\\tangu\\onedrive\\documents\\github\\mypawpal\\back\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6A9803A-A136-46D8-B7B1-85626E6944B0}|MyPawPal.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6A9803A-A136-46D8-B7B1-85626E6944B0}|MyPawPal.csproj|c:\\users\\tangu\\onedrive\\documents\\github\\mypawpal\\back\\controllers\\dogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6A9803A-A136-46D8-B7B1-85626E6944B0}|MyPawPal.csproj|solutionrelative:controllers\\dogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6A9803A-A136-46D8-B7B1-85626E6944B0}|MyPawPal.csproj|c:\\users\\tangu\\onedrive\\documents\\github\\mypawpal\\back\\models\\doginfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6A9803A-A136-46D8-B7B1-85626E6944B0}|MyPawPal.csproj|solutionrelative:models\\doginfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6A9803A-A136-46D8-B7B1-85626E6944B0}|MyPawPal.csproj|c:\\users\\tangu\\onedrive\\documents\\github\\mypawpal\\back\\models\\userinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6A9803A-A136-46D8-B7B1-85626E6944B0}|MyPawPal.csproj|solutionrelative:models\\userinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6A9803A-A136-46D8-B7B1-85626E6944B0}|MyPawPal.csproj|c:\\users\\tangu\\onedrive\\documents\\github\\mypawpal\\back\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6A9803A-A136-46D8-B7B1-85626E6944B0}|MyPawPal.csproj|solutionrelative:mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\Tangu\\OneDrive\\Documents\\GitHub\\MyPawPal\\Back\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\Tangu\\OneDrive\\Documents\\GitHub\\MyPawPal\\Back\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-07T19:20:15.234Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DogController.cs",
+              "DocumentMoniker": "C:\\Users\\Tangu\\OneDrive\\Documents\\GitHub\\MyPawPal\\Back\\Controllers\\DogController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DogController.cs",
+              "ToolTip": "C:\\Users\\Tangu\\OneDrive\\Documents\\GitHub\\MyPawPal\\Back\\Controllers\\DogController.cs",
+              "RelativeToolTip": "Controllers\\DogController.cs",
+              "ViewState": "AQIAADgAAAAAAAAAAAAIwFQAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-07T19:20:14.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MyDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Tangu\\OneDrive\\Documents\\GitHub\\MyPawPal\\Back\\MyDbContext.cs",
+              "RelativeDocumentMoniker": "MyDbContext.cs",
+              "ToolTip": "C:\\Users\\Tangu\\OneDrive\\Documents\\GitHub\\MyPawPal\\Back\\MyDbContext.cs",
+              "RelativeToolTip": "MyDbContext.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAgwC8AAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-02T17:47:49.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserInfo.cs",
+              "DocumentMoniker": "C:\\Users\\Tangu\\OneDrive\\Documents\\GitHub\\MyPawPal\\Back\\Models\\UserInfo.cs",
+              "RelativeDocumentMoniker": "Models\\UserInfo.cs",
+              "ToolTip": "C:\\Users\\Tangu\\OneDrive\\Documents\\GitHub\\MyPawPal\\Back\\Models\\UserInfo.cs",
+              "RelativeToolTip": "Models\\UserInfo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-02T17:46:38.277Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DogInfo.cs",
+              "DocumentMoniker": "C:\\Users\\Tangu\\OneDrive\\Documents\\GitHub\\MyPawPal\\Back\\Models\\DogInfo.cs",
+              "RelativeDocumentMoniker": "Models\\DogInfo.cs",
+              "ToolTip": "C:\\Users\\Tangu\\OneDrive\\Documents\\GitHub\\MyPawPal\\Back\\Models\\DogInfo.cs",
+              "RelativeToolTip": "Models\\DogInfo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAcAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-02T17:46:39.017Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,9 +1,5 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using MyPawPal;
-using System.Text;
-using MyPawPal.Services;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,13 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile("appsettings.json");
 
 // Add services to the container.
-builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer("Server=.;Database=MyPawPal;Integrated Security=True;TrustServerCertificate=true;"));
-
-builder.Services.AddScoped(provider =>
-{
-    var secret = builder.Configuration["JwtConfiguration:Key"];
-    return new JwtService(secret);
-});
+builder.Services.AddDbContext<MyDbContext>(options => options.UseNpgsql(builder.Configuration["ConnectionStrings:DefaultConnection"]));
 
 builder.Services.AddCors(options =>
 {
@@ -28,24 +18,13 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader());
 });
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = builder.Configuration["JwtConfiguration:Issuer"],
-            ValidAudience = builder.Configuration["JwtConfiguration:Issuer"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtConfiguration:Key"]))
-        };
-    });
-
 builder.Services.AddAuthorization();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+                });
 builder.Services.AddMvc().AddXmlSerializerFormatters(); // Content Negotiation, ça permet de renvoyer des données au format XML si le client le demande (par défaut, JSON)
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
