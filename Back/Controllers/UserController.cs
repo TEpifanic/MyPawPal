@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyPawPal.Services;
 
 [ApiController]
@@ -10,14 +11,6 @@ public class UserController : ControllerBase
     public UserController(IUserService userService)
     {
         _userService = userService;
-    }
-
-    // GET: /User
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<UserInfo>>> GetUsers()
-    {
-        var users = await _userService.GetUsersAsync();
-        return Ok(users);
     }
 
     // GET: /User/5

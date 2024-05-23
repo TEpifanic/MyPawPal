@@ -1,9 +1,11 @@
-﻿namespace MyPawPal.Services
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace MyPawPal.Services
 {
     public interface IUserService
     {
-        Task<UserInfo> GetUserAsync(string userId);
-        Task<List<DogInfo>> GetDogsForUserAsync(string userId);
+        Task<ActionResult<UserInfo>> GetUserAsync(string id);
+        Task<List<DogInfo>> GetDogsForUserAsync(string id);
         Task CreateUserAsync(UserInfo userInfo);
     }
 }

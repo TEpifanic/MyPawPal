@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MyPawPal.Services
 {
@@ -11,15 +12,21 @@ namespace MyPawPal.Services
             _context = context;
         }
 
-        public async Task<UserInfo> GetUserAsync(string userId)
+        public async Task<ActionResult<UserInfo>> GetUserAsync(string id)
         {
-            return await _context.UserInfos.FindAsync(userId);
+            return await _context.UserInfos.FindAsync(id);
         }
 
-        public async Task<List<DogInfo>> GetDogsForUserAsync(string userId)
+        public async Task<List<DogInfo>> GetDogsForUserAsync(string id)
         {
-            var user = await _context.UserInfos.Include(u => u.Dogs).FirstOrDefaultAsync(u => u.UserId == userId);
-            return user?.Dogs ?? new List<DogInfo>();
+            var user = await _context.UserInfos.Include(u => u.Dogs).FirstOrDefaultAsync(u => u.UserId == id);
+
+            if (user != null)
+            {
+                return user.Dogs;
+            }
+
+            return [];
         }
 
         public async Task CreateUserAsync(UserInfo userInfo)
