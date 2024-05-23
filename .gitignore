@@ -1,3 +1,521 @@
-*.log
-temp/
-*.vsidx
+# Compiled object files
+*.o
+*.obj
+*.lo
+*.iol
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+*.def
+*.exp
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+*.pgc
+*.pgd
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+*.psmdcp
+
+# Microsoft Visual Studio
+.vscode/
+.vs/
+_*
+[Aa][Ss][Ss][Ee][Mm][Bb][Ll][Yy][Ii][Nn][Ff][Oo].cs
+[Pp][Rr][Oo][Jj][Ee][Cc][Tt].[Aa][Ss][Ss][Ee][Tt][Ss].json
+[Pp][Rr][Oo][Jj][Ee][Cc][Tt].[Ll][Oo][Cc][Kk].[Jj][Ss][Oo][Nn]
+[Pp][Rr][Oo][Jj][Ee][Cc][Tt].[Nn][Uu][Gg][Ee][Tt].[Cc][Aa][Cc][Hh][Ee]
+[Pp][Rr][Oo][Jj][Ee][Cc][Tt].[Nn][Uu][Gg][Ee][Tt].[Ll][Oo][Cc][Kk].[Jj][Ss][Oo][Nn]
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono auto generated files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# MSTest test Results
+[Tt]est[Rr]esult*
+[Tt]est[Rr]esult.xml
+
+# Build results of an ATL Project
+[Dd]ebugPS/
+[Rr]eleasePS/
+[Dd]ebugPSPublic/
+[Rr]eleasePSPublic/
+*.idl.c
+*.tlb.c
+*.rc.c
+
+# C++Builder
+*.cbp
+*.rpt
+*.sli
+
+# Qt
+*.moc
+*.qrc
+
+# Anjuta
+*.autosave
+
+# Code::Blocks project files
+*.layout
+*.depend
+
+# CodeLite project files
+*.project
+
+# Subversion directory
+.svn
+
+# Website
+.cproject
+.project
+.settings
+
+# JetBrains Rider
+.idea/
+.idea/*
+
+# Rider Internal Cache
+.idea/[Aa]ssets*
+.idea/caches
+.idea/dictionaries
+.idea/gradle
+.idea/libraries
+.idea/solution
+.idea/tasks
+.idea/vcs.xml
+.idea/workspace.xml
+
+# Rider logs
+.idea/idea.log
+
+# Rider spellchecker
+.idea/spellchecker/
+
+# Rider misc
+.idea/.idea
+
+# Rider data store
+.idea/workspace/
+.idea/module.xml
+
+# Rider tasks
+.idea/tasks.xml
+
+# Rider history
+.idea/.history/
+
+# Rider external libraries
+.idea/libraries/
+
+# Rider Android native libraries
+.idea/libraries/library/
+
+# Rider runtime targets
+.idea/modules.xml
+
+# Rider remote run
+.idea/run.xml
+
+# Rider code styles
+.idea/codeStyles/
+
+# Rider code styles
+.idea/codeStyles/codeStyleConfig.xml
+
+# Rider run configurations
+.idea/runConfigurations/
+
+# Rider templates
+.idea/liveTemplates/
+
+# Rider external annotations
+.idea/external_annotations.xml
+
+# Rider schema generator
+.idea/schema/
+
+# Rider changes
+.idea/changes.xml
+
+# Rider run manager
+.idea/runManager.xml
+
+# Rider issues tracker
+.idea/issues/
+
+# Rider file templates
+.idea/fileTemplates/
+
+# Rider javascript
+.idea/jsLinters.xml
+
+# Rider vcs
+.idea/vcs.xml
+
+# Rider groovy
+.idea/groovy.xml
+
+# Rider jdkTable
+.idea/jdkTable.xml
+
+# Rider jdbc
+.idea/jdbc.xml
+
+# Rider gradle
+.idea/gradle.xml
+
+# Rider statistics
+.idea/statistics.xml
+
+# Rider tasks.xml
+.idea/tasks.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider repositories.xml
+.idea/repositories.xml
+
+# Rider system.xml
+.idea/system.xml
+
+# Rider *.scope
+.idea/*.scope
+
+# Rider scratch file
+.idea/scratches.xml
+
+# Rider bookmarks
+.idea/bookmarks.xml
+
+# Rider tasks.xml
+.idea/tasks.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider external libraries
+.idea/external_build/
+
+# Rider markdown
+.idea/markdown.xml
+
+# Rider git
+.idea/git.xml
+
+# Rider window
+.idea/window.xml
+
+# Rider shelf
+.idea/shelf/
+
+# Rider XML
+.idea/xml.xml
+
+# Rider live templates
+.idea/liveTemplates/
+
+# Rider projectTemplates
+.idea/projectTemplates/
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider git ignore
+.idea/.ignore
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider git
+.idea/git.xml
+
+# Rider git ignore
+.idea/.ignore
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
+.idea/vcs.xml
+
+# Rider vcs.xml
