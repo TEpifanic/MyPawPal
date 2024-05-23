@@ -21,32 +21,32 @@ public class MyDbContext : DbContext
             entity.HasKey(e => e.UserId);
 
             entity.Property(e => e.UserId)
-                .HasColumnName("UserId")
-                .IsRequired()
-                .HasMaxLength(100);
+                  .HasColumnName("UserId")
+                  .IsRequired()
+                  .ValueGeneratedOnAdd();
 
             entity.Property(e => e.Email)
-                .HasColumnName("Email")
-                .HasMaxLength(50)
-                .IsRequired();
+                  .HasColumnName("Email")
+                  .HasMaxLength(50)
+                  .IsRequired();
 
             entity.Property(e => e.FirstName)
-                .HasColumnName("First_Name")
-                .HasMaxLength(50)
-                .IsRequired();
+                  .HasColumnName("First_Name")
+                  .HasMaxLength(50)
+                  .IsRequired();
 
             entity.Property(e => e.LastName)
-                .HasColumnName("Last_Name")
-                .HasMaxLength(50)
-                .IsRequired();
+                  .HasColumnName("Last_Name")
+                  .HasMaxLength(50)
+                  .IsRequired();
 
             entity.Property(e => e.Age)
-                .HasColumnName("Age");
+                  .HasColumnName("Age");
 
             // One user can have many dogs
             entity.HasMany(u => u.Dogs)
-                .WithOne()
-                .HasForeignKey(d => d.UserId);
+                  .WithOne()
+                  .HasForeignKey(d => d.UserId);
         });
 
         // Configuration de la table Dog_Info
@@ -57,27 +57,28 @@ public class MyDbContext : DbContext
             entity.HasKey(e => e.DogId);
 
             entity.Property(e => e.DogId)
-                .HasColumnName("DogId")
-                .IsRequired()
-                .ValueGeneratedOnAdd();
+                  .HasColumnName("DogId")
+                  .IsRequired()
+                  .ValueGeneratedOnAdd();
 
             entity.Property(e => e.Name)
-                .HasColumnName("Name")
-                .HasMaxLength(50)
-                .IsRequired();
+                  .HasColumnName("Name")
+                  .HasMaxLength(50)
+                  .IsRequired();
 
             entity.Property(e => e.Age)
-                .HasColumnName("Age")
-                .IsRequired();
+                  .HasColumnName("Age")
+                  .IsRequired();
 
             entity.Property(e => e.Race)
-                .HasColumnName("Race")
-                .HasMaxLength(50)
-                .IsRequired();
+                  .HasColumnName("Race")
+                  .HasMaxLength(50)
+                  .IsRequired();
 
             entity.Property(e => e.UserId)
-                .HasColumnName("UserId")
-                .IsRequired();
+                  .HasColumnName("UserId")
+                  .IsRequired();
         });
     }
+
 }

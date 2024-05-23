@@ -1,46 +1,44 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using MyPawPal.Services;
 
 [ApiController]
 [Route("[controller]")]
-public class UserController(MyDbContext context) : ControllerBase
+public class UserController : ControllerBase
 {
-    private readonly MyDbContext _context = context;
+    private readonly IUserService _userService;
+
+    public UserController(IUserService userService)
+    {
+        _userService = userService;
+    }
 
     // GET: /User
     [HttpGet]
     public async Task<ActionResult<IEnumerable<UserInfo>>> GetUsers()
     {
-        return await _context.UserInfos.ToListAsync();
+        var users = await _userService.GetUsersAsync();
+        return Ok(users);
     }
 
     // GET: /User/5
     [HttpGet("{id}")]
     public async Task<ActionResult<UserInfo>> GetUser(string id)
     {
-        var user = await _context.UserInfos.FindAsync(id);
-
+        var user = await _userService.GetUserAsync(id);
         if (user == null)
         {
             return NotFound();
         }
 
-        return user;
+        return Ok(user);
     }
 
-    // GET: /User/5
+    // GET: /User/UserDogs/5
     [HttpGet("UserDogs/{id}")]
-    public async Task<List<DogInfo>> GetDogsForUser(string id)
+    public async Task<ActionResult<IEnumerable<DogInfo>>> GetDogsForUser(string id)
     {
-        var user = await _context.UserInfos.Include(u => u.Dogs).FirstOrDefaultAsync(u => u.UserId == id);
-
-        if (user != null)
-        {
-            return user.Dogs;
-        }
-
-        return [];
+        var dogs = await _userService.GetDogsForUserAsync(id);
+        return Ok(dogs);
     }
 
     // POST: /User
@@ -52,10 +50,7 @@ public class UserController(MyDbContext context) : ControllerBase
             return BadRequest(ModelState);
         }
 
-        _context.UserInfos.Add(userInfo);
-        await _context.SaveChangesAsync();
-
+        await _userService.CreateUserAsync(userInfo);
         return CreatedAtAction(nameof(GetUser), new { id = userInfo.UserId }, userInfo);
     }
-
 }

@@ -1,46 +1,43 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MyPawPal.Services;
 
 [ApiController]
 [Route("[controller]")]
-public class DogController(MyDbContext context) : ControllerBase
+public class DogController : ControllerBase
 {
-    private readonly MyDbContext _context = context;
+    private readonly IDogService _dogService;
+
+    public DogController(IDogService dogService)
+    {
+        _dogService = dogService;
+    }
 
     // GET: /Dog
     [HttpGet]
     public async Task<ActionResult<IEnumerable<DogInfo>>> GetDogs()
     {
-        return await _context.DogInfos.ToListAsync();
+        return Ok(await _dogService.GetDogsAsync());
     }
 
     // GET: /Dog/5
     [HttpGet("{id}")]
     public async Task<ActionResult<DogInfo>> GetDog(int id)
     {
-        var dog = await _context.DogInfos.FindAsync(id);
-
+        var dog = await _dogService.GetDogAsync(id);
         if (dog == null)
         {
             return NotFound();
         }
 
-        return dog;
+        return Ok(dog);
     }
 
     // POST: /Dog
     [HttpPost]
-    public async Task<ActionResult<Task>> PostDog(DogInfo dog)
+    public async Task<ActionResult> PostDog(DogInfo dog)
     {
-        var user = await _context.UserInfos.FindAsync(dog.UserId);
-        if (user == null)
-        {
-            return NotFound("User not found");
-        }
-
-        _context.DogInfos.Add(dog);
-        await _context.SaveChangesAsync();
-
+        await _dogService.AddDogAsync(dog);
         return CreatedAtAction(nameof(GetDog), new { id = dog.DogId }, dog);
     }
 
@@ -53,24 +50,7 @@ public class DogController(MyDbContext context) : ControllerBase
             return BadRequest();
         }
 
-        _context.Entry(dog).State = EntityState.Modified;
-
-        try
-        {
-            await _context.SaveChangesAsync();
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!_context.DogInfos.Any(u => u.DogId == id))
-            {
-                return NotFound();
-            }
-            else
-            {
-                throw;
-            }
-        }
-
+        await _dogService.UpdateDogAsync(dog);
         return NoContent();
     }
 
@@ -78,16 +58,7 @@ public class DogController(MyDbContext context) : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteDog(int id)
     {
-        var dog = await _context.DogInfos.FindAsync(id);
-
-        if (dog == null)
-        {
-            return NotFound();
-        }
-
-        _context.DogInfos.Remove(dog);
-        await _context.SaveChangesAsync();
-
+        await _dogService.DeleteDogAsync(id);
         return NoContent();
     }
 }
