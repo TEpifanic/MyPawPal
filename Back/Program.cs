@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MyPawPal.Services;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,9 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddAuthorization();
+
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IDogService, DogService>();
 
 builder.Services.AddControllers()
                 .AddJsonOptions(options =>
