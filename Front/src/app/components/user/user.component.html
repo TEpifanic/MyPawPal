@@ -1,0 +1,10 @@
+<div *ngIf="user">
+    <h2>User</h2>
+    <p>{{ user.firstName }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>ID: {{ user.userId }}</p>
+    <!-- Add more fields as needed -->
+</div>
+<div *ngIf="!user">
+    <p>Loading...</p>
+</div>

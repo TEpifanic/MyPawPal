@@ -1,0 +1,7 @@
+<h2>Dogs</h2>
+<ul>
+  <li *ngFor="let dog of dogs">{{ dog.name }} ({{ dog.race }})</li>
+</ul>
+<div *ngIf="!dogs">
+  <p>Loading...</p>
+</div>
