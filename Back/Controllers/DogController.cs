@@ -1,64 +1,91 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using MyPawPal.Services;
+using MyPawPal.Application.Interfaces;
+using MyPawPal.Application.DTOs;
+using MyPawPal.Domain.Entities;
 
-[ApiController]
-[Route("[controller]")]
-public class DogController : ControllerBase
+namespace MyPawPal.API.Controllers
 {
-    private readonly IDogService _dogService;
-
-    public DogController(IDogService dogService)
+    [ApiController]
+    [Route("[controller]")]
+    public class DogController : ControllerBase
     {
-        _dogService = dogService;
-    }
+        private readonly IDogService _dogService;
 
-    // GET: /Dog
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<DogInfo>>> GetDogs()
-    {
-        return Ok(await _dogService.GetDogsAsync());
-    }
-
-    // GET: /Dog/5
-    [HttpGet("{id}")]
-    public async Task<ActionResult<DogInfo>> GetDog(int id)
-    {
-        var dog = await _dogService.GetDogAsync(id);
-        if (dog == null)
+        public DogController(IDogService dogService)
         {
-            return NotFound();
+            _dogService = dogService;
         }
 
-        return Ok(dog);
-    }
-
-    // POST: /Dog
-    [HttpPost]
-    public async Task<ActionResult> PostDog(DogInfo dog)
-    {
-        await _dogService.AddDogAsync(dog);
-        return CreatedAtAction(nameof(GetDog), new { id = dog.DogId }, dog);
-    }
-
-    // PUT: /Dog/5
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutDog(int id, DogInfo dog)
-    {
-        if (id != dog.DogId)
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<DogDto>>> GetDogs()
         {
-            return BadRequest();
+            var dogs = await _dogService.GetDogsAsync();
+            return Ok(dogs.Select(d => new DogDto
+            {
+                DogId = d.DogId,
+                Name = d.Name,
+                Age = d.Age,
+                Race = d.Race,
+                UserId = d.UserId
+            }));
         }
 
-        await _dogService.UpdateDogAsync(dog);
-        return NoContent();
-    }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<DogDto>> GetDog(int id)
+        {
+            var dog = await _dogService.GetDogAsync(id);
+            if (dog == null)
+            {
+                return NotFound();
+            }
+            return Ok(new DogDto
+            {
+                DogId = dog.DogId,
+                Name = dog.Name,
+                Age = dog.Age,
+                Race = dog.Race,
+                UserId = dog.UserId
+            });
+        }
 
-    // DELETE: /Dog/5
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteDog(int id)
-    {
-        await _dogService.DeleteDogAsync(id);
-        return NoContent();
+        [HttpPost]
+        public async Task<ActionResult> PostDog(DogDto dogDto)
+        {
+            var dogInfo = new DogInfo
+            {
+                Name = dogDto.Name,
+                Age = dogDto.Age,
+                Race = dogDto.Race,
+                UserId = dogDto.UserId
+            };
+            await _dogService.AddDogAsync(dogInfo);
+            return CreatedAtAction(nameof(GetDog), new { id = dogInfo.DogId }, dogDto);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutDog(int id, DogDto dogDto)
+        {
+            if (id != dogDto.DogId)
+            {
+                return BadRequest();
+            }
+            var dogInfo = new DogInfo
+            {
+                DogId = dogDto.DogId,
+                Name = dogDto.Name,
+                Age = dogDto.Age,
+                Race = dogDto.Race,
+                UserId = dogDto.UserId
+            };
+            await _dogService.UpdateDogAsync(dogInfo);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteDog(int id)
+        {
+            await _dogService.DeleteDogAsync(id);
+            return NoContent();
+        }
     }
 }

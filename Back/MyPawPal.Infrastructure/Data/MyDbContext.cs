@@ -1,20 +1,28 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using MyPawPal.Domain.Entities;
 
-public class MyDbContext : DbContext
+namespace MyPawPal.Infrastructure
 {
-    public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
+    public class MyDbContext : DbContext
     {
-    }
+        public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
+        {
+        }
 
-    public DbSet<UserInfo> UserInfos { get; set; }
-    public DbSet<DogInfo> DogInfos { get; set; }
+        public DbSet<UserInfo> UserInfos { get; set; }
+        public DbSet<DogInfo> DogInfos { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
-        // Configuration de la table User_Info
-        modelBuilder.Entity<UserInfo>(entity =>
+            // Configuration de la table User_Info
+            modelBuilder.Entity<UserInfo>(ConfigureUserInfo);
+            modelBuilder.Entity<DogInfo>(ConfigureDogInfo);
+        }
+
+        private void ConfigureUserInfo(EntityTypeBuilder<UserInfo> entity)
         {
             entity.ToTable("User_Info");
 
@@ -45,12 +53,11 @@ public class MyDbContext : DbContext
 
             // One user can have many dogs
             entity.HasMany(u => u.Dogs)
-                  .WithOne()
+                  .WithOne(d => d.User)
                   .HasForeignKey(d => d.UserId);
-        });
+        }
 
-        // Configuration de la table Dog_Info
-        modelBuilder.Entity<DogInfo>(entity =>
+        private void ConfigureDogInfo(EntityTypeBuilder<DogInfo> entity)
         {
             entity.ToTable("Dog_Info");
 
@@ -78,7 +85,6 @@ public class MyDbContext : DbContext
             entity.Property(e => e.UserId)
                   .HasColumnName("UserId")
                   .IsRequired();
-        });
+        }
     }
-
 }
