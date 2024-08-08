@@ -2,7 +2,6 @@
 using MyPawPal.Application.Interfaces;
 using MyPawPal.Application.DTOs;
 using MyPawPal.Domain.Entities;
-using MyPawPal.Application.Interfaces.MyPawPal.Services;
 
 namespace MyPawPal.API.Controllers
 {
@@ -50,7 +49,7 @@ namespace MyPawPal.API.Controllers
                 Age = d.Age,
                 Race = d.Race,
                 UserId = d.UserId
-            }));
+            }).ToList());
         }
 
         [HttpPost]

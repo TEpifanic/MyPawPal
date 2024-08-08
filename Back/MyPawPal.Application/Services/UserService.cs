@@ -1,7 +1,6 @@
 ﻿using MyPawPal.Domain.Entities;
 using MyPawPal.Domain.Interfaces;
 using MyPawPal.Application.Interfaces;
-using MyPawPal.Application.Interfaces.MyPawPal.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MyPawPal.Application.Services

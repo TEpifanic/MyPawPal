@@ -1,6 +1,9 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
+using MyPawPal.API;
+using MyPawPal.API.Validators;
 using MyPawPal.Application.Interfaces;
-using MyPawPal.Application.Interfaces.MyPawPal.Services;
 using MyPawPal.Application.Services;
 using MyPawPal.Domain.Interfaces;
 using MyPawPal.Infrastructure;
@@ -46,9 +49,17 @@ builder.Services.AddMvc().AddXmlSerializerFormatters();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
+builder.Services.AddValidatorsFromAssemblyContaining<UserDtoValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<DogDtoValidator>();
+
+builder.Services.AddAutoMapper(typeof(Program).Assembly, typeof(MappingProfile).Assembly);
+
 var app = builder.Build();
 
 app.UseCors("CorsPolicy");
+
+app.UseHttpsRedirection();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -62,5 +73,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.Run();
